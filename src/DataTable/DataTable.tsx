@@ -25,37 +25,36 @@ function DataTable() {
   }*/
 
   return (
-    <>
+    <div className="contentbody">
+      <div className="datatable">
       <table>
         <thead>
           <tr>
-            <th>Etunimi</th>
-            <th>Sukunimi</th>
-            <th>Ikä</th>
+            <th id="darkcell">Etunimi</th>
+            <th id="darkcell">Sukunimi</th>
+            <th id="darkcell">Ikä</th>
+            <th id="darkcell">Muokkaa/poista</th>
           </tr>
         </thead>
         <tbody>
-        {/*testetet
-            allData.map((e) => {
-              return <TableRow firstName={e.firstName} lastName={e.lastName} age={e.age} onClick={() => deleteRow(2)} buttonText={"Poista"}></TableRow>
-            })
-          tetst*/}
-          {/*allData.length <= 0
+          {allData.length < 1 
             ?
-            // Empty table with text
             <tr>
-                <td>Lisää henkilöitä listaan</td>
+              <th id="emptycell"></th>
+              <th id="emptycell"></th>
+              <th id="emptycell"></th>
+              <th id="emptycell"></th>
             </tr>
-            :*/
-            
-            // Map table rows
+            :
             allData.map((row, index) => {
               return <TableRow key={index} firstName={row.firstName} lastName={row.lastName} age={row.age} onClick={() => deleteRow(index)} buttonText={"Poista"}></TableRow>
             })}
         </tbody>
       </table>
+      </div>
+      
       <AddDialog onInput={addNew}></AddDialog>
-    </>
+    </div>
     )
   }
   

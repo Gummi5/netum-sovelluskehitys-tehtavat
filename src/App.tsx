@@ -1,23 +1,19 @@
 import React from 'react'
 import './App.css'
 import DataTable from './DataTable/DataTable';
+import Footer from './Footer';
+import Header from './Header';
 
 
 function App() {
 
   return (
-    <div className="App" >
-      <header>
-        NIMILISTASOVELLUS
-      </header>
+    <div className="App">
+      <Header/>
       <DataTable/>
-      <footer>
-        <p>Juho Kumara</p>
-        <p>2022</p>
-        <a href="https://github.com/Gummi5">Github</a>
-      </footer>
+      <Footer/>
     </div>
-  );
+  )
 }
 
 export default App

@@ -1,38 +1,205 @@
-.App {
-  text-align: center;
+#darkcell
+{
+	background-color: rgb(44, 44, 44);
+	color: aliceblue;
+	padding: 20px;
+	width: 72px;
+}
+#emptycell
+{
+	background-color: lightgrey;
+	padding: 5px;
+}
+#iconcell
+{
+	background-color: #005c5c;
+	padding: 5px;
+}
+.acceptbutton
+{
+	background-color: #4CAF50;
+	border-radius: 10px 0px 0px 10px;
+}
+.acceptbutton, .cancelbutton
+{
+	padding: 15px;
+}
+.acceptbutton, .cancelbutton, .addbutton
+{
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	text-transform: uppercase;
+}
+.addbutton
+{
+	background-color: #005c5c;
+	border-radius: 25px;
+	color: rgb(255, 255, 255);
+	margin: 30px 8px;
+	max-width: 80%;
+	min-width: 15%;
+	padding: 14px 20px;
+}
+.App
+{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+.cancelbutton
+{
+	background-color: rgb(255, 0, 0);
+	border-radius: 0px 10px 10px 0px;
+	color: rgb(255, 255, 255);
+}
+.contentbody
+{
+  padding-top: 30px;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.datatable
+{
+	max-height: 250px;
+	max-width: 90vw;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+.formbuttons
+{
+	flex-direction: row;
+	padding-top: 20px;
+}
+.forminput
+{
+	background-color: #f1f1f1;
+	border: none;
+	border-radius: 4px;
+	flex-direction: row;
+	margin: 5px;
+	resize: none;
+	width: max-content;
+}
+.forminput:hover
+{
+	background-color: bisque;
+}
+.iconbutton
+{
+	background-color: transparent;
+	color: rgb(255, 255, 255);
+	font-size: 25px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+button, input
+{
+	border: none;
+	font-family: Tahoma, Verdana, sans-serif;
+	opacity: 1;
+	padding: 5px;
+}
+button:hover, .formbuttons:hover
+{
+	opacity: 0.8;
+}
+.dialog
+{  
+  position: fixed;
+  z-index: 1;
+  width: fit-content;
+  height: fit-content;
+	background-color: rgb(44, 44, 44);
+	border-radius: 10px;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	left: 50%;
+	margin: 10px 10px;
+	padding: 10px 10px;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dialogbg{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(7, 7, 14, 0.466);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dialog, .inputbutton, .addbutton
+{
+	border: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+footer
+{
+	bottom: 0;
+	height: 20%;
+	left: 0;
+	position: fixed;
+	width: 100vw;
 }
-
-.App-link {
-  color: #61dafb;
+footer a
+{
+	color: rgb(171, 201, 228);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form
+{
+	display: flex;
+	flex-direction: column;
+}
+header
+{
+	min-height: 10%;
+  font-size: large;
+}
+header, footer
+{
+	background-color: rgb(44, 44, 44);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	color: aliceblue;
+	font-family: 'Courier New', Courier, monospace;
+	padding: 14px;
+	width: 100vw;
+}
+html
+{
+	background-color: darkgray;
+}
+h5{
+  font-weight: lighter;
+}
+input:disabled
+{
+	background-color: rgb(212, 212, 212);
+	color: rgb(255, 255, 255);
+	opacity: 1;
+	pointer-events: none;
+}
+label{
+  padding-top: 6px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  text-align: left;
+}
+td
+{
+	background-color: #007272;
+	max-height: 50px;
+	padding: 10px;
+}
+td, th
+{
+	color: aliceblue;
+}
+thead th
+{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	position: sticky;
+	top: 0;
 }

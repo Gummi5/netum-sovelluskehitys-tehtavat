@@ -9,7 +9,7 @@ export interface IAddProps {
 const AddDialog = (props: IAddProps) => {
     const [popupOpen, setPopupOpen] = useState(false)
     const [addDisabled, setAddDisabled] = useState(true)
-    const [input, setInput] = useState<IRowData>({firstName: "", lastName: "", age: -1})
+    const [input, setInput] = useState<IRowData>({firstName: "", lastName: "", age: 0})
 
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
       const type = e.target.name
@@ -20,63 +20,96 @@ const AddDialog = (props: IAddProps) => {
           ...original,
             [type]: value
           }))
+        
+        if(!Number.isNaN(input.age)){
+          if(value === "" || input.age < 1 || input.age > 124) {
+            setAddDisabled(true)
+          }
+          else {
+            setAddDisabled(false)
+          }
+        }
+        else {
+          setAddDisabled(true)
+        }
       }
       else {
-        setInput(original => ({
-          ...original,
-            "age": parseInt(value)
-        }))
-      }
+        const numeralValue = parseInt(value)
 
-      if(input.firstName === "" || input.lastName === "" || input.age < 1){
-        setAddDisabled(true);
-      }
-      else {
-        setAddDisabled(false);
+        if(Number.isNaN(numeralValue)) {
+          setInput(original => ({
+            ...original,
+              "age": NaN
+          }))
+
+          setAddDisabled(true)
+        }
+        else {
+
+          setInput(original => ({
+            ...original,
+              "age": numeralValue
+          }))
+
+          if(numeralValue < 1 || numeralValue > 124 || numeralValue === NaN || input.firstName === "" || input.lastName === "") {
+            setAddDisabled(true)
+          }
+          else {
+            setAddDisabled(false)
+          }
+        }
       }
     }
 
     const openAddDialog = () => {
       setPopupOpen(true)
-      setInput({firstName: "", lastName: "", age: -1})
+      setAddDisabled(true);
+      setInput({firstName: "", lastName: "", age: 0})
     }
 
     return (
       <>
         {/* Button opens dialog*/}
-        <button onClick={openAddDialog}>Lisää</button>
+        <button className="addbutton" onClick={openAddDialog}>Lisää</button>
         {/* Dialog*/}
-        <dialog open={popupOpen}>
-          <form method="dialog" onSubmit={() => {props.onInput(input); setPopupOpen(false)}}>
-            <label>
-              Etunimi:
-              <input onChange={(e) => handleChange(e)}
-                name="firstName"
-                type="textfield"
-              />
-            </label>
-            <br />
-            <label>
-              Sukunimi:
-              <input onChange={(e) => handleChange(e)}
-                name="lastName"
-                type="textfield" 
-              />
-            </label>
-            <br />
-            <label>
-              Ikä:
-              <input onChange={(e) => handleChange(e)}
-                name="age"
-                type="number"
-                min="1" 
-                max="124"
-              />
-            </label>
-            <input type="submit" value="Hyväksy" disabled={addDisabled}></input>
-            <input type="button" value="Peruuta" onClick={() => setPopupOpen(false)}></input>
-          </form>
-        </dialog>
+        <div className="dialogbg" style={{display: popupOpen ? 'block' : 'none' }}>
+          <div className="dialog" style={{display: popupOpen ? 'block' : 'none' }}>
+            <form method="dialog" onSubmit={() => {props.onInput(input); setPopupOpen(false)}}>
+              <label className="formheader">
+                Etunimi
+              </label>
+              <input className="forminput" onChange={(e) => handleChange(e)}
+                  value={input.firstName}
+                  placeholder="Esim. Matti"
+                  name="firstName"
+                  type="textfield"
+                />
+              <label className="formheader">
+                Sukunimi
+              </label>
+              <input className="forminput" onChange={(e) => handleChange(e)}
+                  value={input.lastName}
+                  placeholder="Esim. Meikäläinen"
+                  name="lastName"
+                  type="textfield" 
+                />
+              <label className="formheader">
+                Ikä
+              </label>
+              <input className="forminput" onChange={(e) => handleChange(e)}
+                  value={input.age}
+                  name="age"
+                  type="number"
+                  min="1" 
+                  max="124"
+                />
+              <div className="formbuttons">
+                <input className="acceptbutton" type="submit" value="Hyväksy" disabled={addDisabled}></input>
+                <input className="cancelbutton" type="button" value="Peruuta" onClick={() => setPopupOpen(false)}></input>
+              </div>
+            </form>
+          </div>
+        </div>
       </>
     )
   }
