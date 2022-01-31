@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import AddDialog from './AddDialog'
+import Dialog from './Dialog'
 import TableRow, { IRowData } from './TableRow'
 // Contains table for data and add dialog
 function DataTable() {
   const [allData, setAllData] = useState<IRowData[]>([])
+
   // Deletes a row by id
   const deleteRow = (id : number) : void => {
     let data = allData.filter((row, index) => index !== id)
@@ -17,6 +18,12 @@ function DataTable() {
       rowData.push(newData)
       setAllData([...rowData])
       console.log(allData[0])
+  }
+
+  // Replaces an existing row with given data
+    const updateRow = (newData : IRowData, id: number) => {
+      addNew(newData)
+      deleteRow(id)
   }
 
   return (
@@ -44,13 +51,13 @@ function DataTable() {
             :
             // Map table rows
             allData.map((row, index) => {
-              return <TableRow key={index} firstName={row.firstName} lastName={row.lastName} age={row.age} onClick={() => deleteRow(index)}></TableRow>
+              return <TableRow key={index} id={index} firstName={row.firstName} onEdit={updateRow} lastName={row.lastName} age={row.age} onClick={() => deleteRow(index)}></TableRow>
             })}
         </tbody>
       </table>
       </div>
       {/*Add dialog, uses function addNew as a prop*/}
-      <AddDialog onInput={addNew}></AddDialog>
+      <Dialog onSubmit={addNew} dialogHeader="Lisää henkilö"></Dialog>
     </div>
     )
   }

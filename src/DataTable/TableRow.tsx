@@ -1,4 +1,5 @@
 import React from 'react'
+import Dialog from './Dialog'
 
 // Basic one row data
 export interface IRowData {
@@ -9,9 +10,16 @@ export interface IRowData {
 // Additional props of one row (local interface)
 interface IRowElementData extends IRowData {
   onClick: React.MouseEventHandler<HTMLButtonElement>
+  onEdit: (data: IRowData, id: number) => void
+  id: number
 }
 // JSX Element displaying data of a row
 const TableRow = (row: IRowElementData) => {
+
+    const EditRow = (data: IRowData) => {
+      row.onEdit(data, row.id)
+    }
+
     return (
       <>
           <tr>
@@ -20,7 +28,7 @@ const TableRow = (row: IRowElementData) => {
               <td>{row.lastName}</td>
               <td>{row.age}</td>
               <td id="iconcell">
-                <button className="iconbutton" onClick={row.onClick}><i className="fa fa-edit"></i></button>
+                <Dialog onSubmit={EditRow} useIcon={true} dialogHeader="Muokkaa"></Dialog>
                 <button className="iconbutton" onClick={row.onClick}><i className="fa fa-trash"></i></button>
               </td>
           </tr>

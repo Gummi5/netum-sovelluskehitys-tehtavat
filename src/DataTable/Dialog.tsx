@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { IRowData } from './TableRow';
 
 // Props of the add dialog
-export interface IAddProps {
-    onInput: (arg: IRowData) => void
+interface IDialogProps {
+    onSubmit: (data: IRowData) => void
+    useIcon?: boolean
+    dialogHeader: string
   }
 
-// Dialog for adding new rows to the table
-const AddDialog = (props: IAddProps) => {
+// Dialog for adding new rows to the table or updating them
+const Dialog = (props: IDialogProps) => {
     const [popupOpen, setPopupOpen] = useState(false)
     const [addDisabled, setAddDisabled] = useState(true)
     const [input, setInput] = useState<IRowData>({firstName: "", lastName: "", age: 0})
@@ -74,11 +76,17 @@ const AddDialog = (props: IAddProps) => {
     return (
       <>
         {/* Button opens dialog*/}
-        <button className="addbutton" onClick={openAddDialog}>Lisää</button>
+        {props.useIcon
+          ?
+          <button className="iconbutton" onClick={openAddDialog}><i className="fa fa-edit"></i></button>    
+          :
+          <button className="addbutton" onClick={openAddDialog}>Lisää</button>
+        }
         {/* Dialog*/}
         <div className="dialogbg" style={{display: popupOpen ? 'block' : 'none' }}>
           <div className="dialog" style={{display: popupOpen ? 'block' : 'none' }}>
-            <form method="dialog" onSubmit={() => {props.onInput(input); setPopupOpen(false)}}>
+            <h4>{props.dialogHeader}</h4>
+            <form method="dialog" onSubmit={() => {props.onSubmit(input); setPopupOpen(false)}}>
               <label className="formheader">
                 Etunimi
               </label>
@@ -118,4 +126,4 @@ const AddDialog = (props: IAddProps) => {
     )
   }
   
-  export default AddDialog
+  export default Dialog

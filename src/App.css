@@ -36,8 +36,7 @@
 	border-radius: 25px;
 	color: rgb(255, 255, 255);
 	margin: 30px 8px;
-	max-width: 80%;
-	min-width: 15%;
+	width: 200px;
 	padding: 14px 20px;
 }
 .App
@@ -54,7 +53,7 @@
 }
 .contentbody
 {
-  padding-top: 30px;
+	padding-top: 30px;
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -70,7 +69,7 @@
 .formbuttons
 {
 	flex-direction: row;
-	padding-top: 20px;
+	padding: 20px 0px;
 }
 .forminput
 {
@@ -107,28 +106,28 @@ button:hover, .formbuttons:hover
 }
 .dialog
 {  
-  position: fixed;
-  z-index: 1;
-  width: fit-content;
-  height: fit-content;
+	position: fixed;
+	z-index: 1;
+	width: fit-content;
+	height: fit-content;
 	background-color: rgb(44, 44, 44);
 	border-radius: 10px;
 	color: rgb(255, 255, 255);
 	cursor: pointer;
 	left: 50%;
 	margin: 10px 10px;
-	padding: 10px 10px;
-	top: 50%;
+	padding: 10px 30px;
+	top: 40%;
 	transform: translate(-50%, -50%);
 }
 
 .dialogbg{
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(7, 7, 14, 0.466);
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(7, 7, 14, 0.466);
 }
 
 .dialog, .inputbutton, .addbutton
@@ -171,8 +170,17 @@ html
 {
 	background-color: darkgray;
 }
-h5{
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+h5
+{
   font-weight: lighter;
+}
+h4
+{
+	text-align: left;
 }
 input:disabled
 {
