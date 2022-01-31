@@ -7,8 +7,7 @@ export interface IRowData {
   age: number
 }
 // Additional props of one row (local interface)
-interface IRowElementData extends IRowData{
-  buttonText: string
+interface IRowElementData extends IRowData {
   onClick: React.MouseEventHandler<HTMLButtonElement>
 }
 // JSX Element displaying data of a row

@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import AddDialog from './AddDialog'
 import TableRow, { IRowData } from './TableRow'
-
+// Contains table for data and add dialog
 function DataTable() {
   const [allData, setAllData] = useState<IRowData[]>([])
-
+  // Deletes a row by id
   const deleteRow = (id : number) : void => {
     let data = allData.filter((row, index) => index !== id)
     setAllData(data)
   }
-
+  // Adds a new row of given data
   const addNew = (newData : IRowData) => {
       const rowData = allData
       console.log(newData)
@@ -18,11 +18,6 @@ function DataTable() {
       setAllData([...rowData])
       console.log(allData[0])
   }
-
-  /*const randomizeID = () : number =>{
-    const base = allData.length*1000
-    return base + Math.floor(Math.random() * 999)
-  }*/
 
   return (
     <div className="contentbody">
@@ -37,7 +32,8 @@ function DataTable() {
           </tr>
         </thead>
         <tbody>
-          {allData.length < 1 
+          {// Show empty placeholder cells, if no data inserted
+            allData.length < 1 
             ?
             <tr>
               <th id="emptycell"></th>
@@ -46,13 +42,14 @@ function DataTable() {
               <th id="emptycell"></th>
             </tr>
             :
+            // Map table rows
             allData.map((row, index) => {
-              return <TableRow key={index} firstName={row.firstName} lastName={row.lastName} age={row.age} onClick={() => deleteRow(index)} buttonText={"Poista"}></TableRow>
+              return <TableRow key={index} firstName={row.firstName} lastName={row.lastName} age={row.age} onClick={() => deleteRow(index)}></TableRow>
             })}
         </tbody>
       </table>
       </div>
-      
+      {/*Add dialog, uses function addNew as a prop*/}
       <AddDialog onInput={addNew}></AddDialog>
     </div>
     )

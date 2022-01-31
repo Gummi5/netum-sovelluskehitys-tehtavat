@@ -6,15 +6,18 @@ export interface IAddProps {
     onInput: (arg: IRowData) => void
   }
 
+// Dialog for adding new rows to the table
 const AddDialog = (props: IAddProps) => {
     const [popupOpen, setPopupOpen] = useState(false)
     const [addDisabled, setAddDisabled] = useState(true)
     const [input, setInput] = useState<IRowData>({firstName: "", lastName: "", age: 0})
 
+    // Handles changes of input values
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
       const type = e.target.name
       const value = e.target.value
-
+      
+      // Sets new name value and checks if adding a new row is possible
       if(type !== "age"){
         setInput(original => ({
           ...original,
@@ -33,6 +36,7 @@ const AddDialog = (props: IAddProps) => {
           setAddDisabled(true)
         }
       }
+      // Sets new age value and checks if adding a new row is possible
       else {
         const numeralValue = parseInt(value)
 
