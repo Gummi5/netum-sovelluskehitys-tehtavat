@@ -1,10 +1,13 @@
 #darkcell
 {
-	background-color: rgb(44, 44, 44);
+	cursor: pointer;
 	color: aliceblue;
-	padding: 20px;
-	width: 72px;
 }
+
+#darkcell:hover{
+	opacity: 0.8;
+}
+
 #emptycell
 {
 	background-color: lightgrey;
@@ -26,6 +29,7 @@
 }
 .acceptbutton, .cancelbutton, .addbutton
 {
+	cursor: pointer;
 	color: rgb(255, 255, 255);
 	cursor: pointer;
 	text-transform: uppercase;
@@ -88,6 +92,7 @@
 }
 .iconbutton
 {
+	cursor: pointer;
 	background-color: transparent;
 	color: rgb(255, 255, 255);
 	font-size: 25px;
@@ -212,4 +217,7 @@ thead th
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	position: sticky;
 	top: 0;
+	background-color: rgb(44, 44, 44);
+	padding: 20px;
+	width: 72px;
 }
