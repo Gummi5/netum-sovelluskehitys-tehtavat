@@ -1,3 +1,6 @@
 # Netumin kesätöiden sovelluskehitys-tehtävät 2022
 
-React/TypeScript frontend
+
+Tehty tehtävä 2.1 (frontend), ja siihen liittyvät bonuskohdat 1-3.
+
+Juho Kumara 2022
