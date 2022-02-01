@@ -22,7 +22,7 @@
 }
 .acceptbutton, .cancelbutton
 {
-	padding: 15px;
+	padding: 10px;
 }
 .acceptbutton, .cancelbutton, .addbutton
 {
@@ -32,6 +32,7 @@
 }
 .addbutton
 {
+	z-index: 1;
 	background-color: #005c5c;
 	border-radius: 25px;
 	color: rgb(255, 255, 255);
@@ -61,15 +62,16 @@
 }
 .datatable
 {
-	max-height: 250px;
-	max-width: 90vw;
+	max-height: 300px;
+	max-width: 98vw;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
 }
 .formbuttons
 {
 	flex-direction: row;
-	padding: 20px 0px;
+	padding-top: 15px;
+	padding-bottom: 10px;
 }
 .forminput
 {
@@ -107,7 +109,7 @@ button:hover, .formbuttons:hover
 .dialog
 {  
 	position: fixed;
-	z-index: 1;
+	z-index: 9;
 	width: fit-content;
 	height: fit-content;
 	background-color: rgb(44, 44, 44);
@@ -115,8 +117,7 @@ button:hover, .formbuttons:hover
 	color: rgb(255, 255, 255);
 	cursor: pointer;
 	left: 50%;
-	margin: 10px 10px;
-	padding: 10px 30px;
+	padding: 5px 20px;
 	top: 40%;
 	transform: translate(-50%, -50%);
 }
@@ -138,7 +139,7 @@ button:hover, .formbuttons:hover
 footer
 {
 	bottom: 0;
-	height: 20%;
+	height: 15%;
 	left: 0;
 	position: fixed;
 	width: 100vw;
@@ -149,16 +150,18 @@ footer a
 }
 form
 {
+	z-index: 9;
 	display: flex;
 	flex-direction: column;
 }
 header
 {
 	min-height: 10%;
-  font-size: large;
+  	font-size: large;
 }
 header, footer
 {
+	text-align: center;
 	background-color: rgb(44, 44, 44);
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	color: aliceblue;
@@ -176,7 +179,7 @@ html, body {
 }
 h5
 {
-  font-weight: lighter;
+  	font-weight: lighter;
 }
 h4
 {

@@ -78,9 +78,9 @@ const Dialog = (props: IDialogProps) => {
         {/* Button opens dialog*/}
         {props.useIcon
           ?
-          <button className="iconbutton" onClick={openAddDialog}><i className="fa fa-edit"></i></button>    
+          <button className="iconbutton" hidden={popupOpen} onClick={openAddDialog}><i className="fa fa-edit"></i></button>    
           :
-          <button className="addbutton" onClick={openAddDialog}>Lisää</button>
+          <button className="addbutton" hidden={popupOpen} onClick={openAddDialog}>Lisää</button>
         }
         {/* Dialog*/}
         <div className="dialogbg" style={{display: popupOpen ? 'block' : 'none' }}>
